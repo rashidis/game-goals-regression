@@ -199,7 +199,7 @@ if __name__ == "__main__":
     X.set_index("game_id", inplace=True, drop=True)
     print(f'X dataframe with shape {X.shape} is craeted.')
 
-    y = output_events_df[["game_id", "home_goals", "away_goals"]]
+    y = output_events_df[["game_id", "home_goals", "away_goals"]].copy() 
     y.sort_values('game_id', inplace=True)
     y.set_index("game_id", inplace=True, drop=True)
     print(f'y dataframe with shape {y.shape} is craeted.')
