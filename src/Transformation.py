@@ -176,8 +176,7 @@ def generate_input_output_seqs(sequences, max_time):
     return input_events_df, output_events_df
 
 if __name__ == "__main__":
-
-
+    
     events_df = pd.read_csv('../data/events.csv')
     events_df = preprocess_events(events_df)
     sequences = generate_sequences(events_df)
@@ -205,6 +204,9 @@ if __name__ == "__main__":
     y.set_index("game_id", inplace=True, drop=True)
     print(f'y dataframe with shape {y.shape} is craeted.')
 
+    # Drop outliers
+    X, y = drop_outliers(X, y)
+    
     ## store the datasets
     X.to_csv('../data/X.csv')
     y.to_csv('../data/y.csv')
